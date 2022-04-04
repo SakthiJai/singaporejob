@@ -1,0 +1,8 @@
+#sidebar{background-color: red !important;}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 1.5em;
+     padding: 0px !important; 
+     margin-left: 0px !important;
+}
