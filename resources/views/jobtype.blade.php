@@ -217,11 +217,14 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="table-responsive pt-3">
-                  <table class="table table-striped project-orders-table" id="category_table">
+                  <table class="table table-striped project-orders-table" id="joblist_table">
                     <thead>
                       <tr>
                         <th class="ml-5">ID</th>
-                        <th>Category name</th>
+                        <th>Job Tittle</th>
+                        <th>Category</th>
+                        <th>Sectors</th>
+                        <th>Service Charge</th>
                         <th>Status</th>
                         <th>Actions</th>
                       </tr>
@@ -265,28 +268,98 @@
           <!-------Add modal---->
 		  <div class="modal fade bd-example-modal-lg" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-    <div class="modal-content" style="width:45%; margin-left:13%;">
+    <div class="modal-content" style="width:77%; margin-left:13%;">
 	<div class="modal-header" style="background-color: #21beb3;">
-	<h5 class="" >Add Category</h5>
+	<h5 class="">Add Job</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-	   <form id="category_form" style="padding: 4px 13px;">
+	   <form id="jobtype_form" style="padding: 4px 13px;">
 	   {{ csrf_field() }}
-				<div class="row">
-						<input type="hidden" value="" id="id" name="id"/> 
+					<div class="row">
+					<input type="hidden" value="" id="id" name="id"/> 
 						<div class="col-md-6 roles">
-                            <label for="roles">Category</label>
-                            <input type="text" name="category" class="form-control" id="category" placeholder="" autocomplete="off" maxlength="50">
+                            <label for="roles">Job Title</label>
+                            <input type="text" name="job_title" class="form-control" id="job_title" placeholder="" autocomplete="off" maxlength="50">
                         </div>
 						<div class="col-md-6">
-							
-						</div>
-                </div>
-				<div class="form-group"  align="center" style="margin-top:14px;">
+						<div class="form-group">
+						<label for="exampleSelectGender">Job Sectors</label>
+                        <select class="form-control" id="job_sectors" name="job_sectors">
+						 <option>Select</option>
+                        </select>
+                      </div>
+					  </div>
+                    </div>
+					<div class="row">
+					
+				  <div class="col-md-6">
+					<div class="form-group">
+                      <label for="exampleSelectGender">Sub Category</label>
+                        <select class="form-control" id="sub_Category" name="sub_Category">
+						 <option value="">Select</option>
+                          <option value="1">General Worker</option>
+						   <option value="2">Excavtive Operator</option>
+						    <option value="3">Lifting Supervisor</option>
+							 <option value="4">Timing From Worker</option>
+							  <option value="5">Welding Mig/TIG</option>
+                        </select>
+                      </div>
+					  </div>
+					   <div class="col-md-6">
+						<div class="form-group">
+                      <label for="exampleSelectGender">Job Category</label>
+                        <select class="form-control" id="job_Category" name="job_Category">
+						 <option value="">Select</option>
+                        </select>
+                      </div>
+					  </div>
+					</div>
+					<div class="row">
+					<div class="col-sm-6">
+						 <div class="form-group">
+						 <p>Required Experience</p>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios1" value="1">
+                              0-3
+                            </label>
+							</div>
+							<div class="form-check">
+							<label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios2" value="2">
+                              3-6
+                            </label>
+							</div>
+							<div class="form-check">
+							<label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios3" value="3">
+                              6-7
+                            </label>
+                          </div>
+					</div>
+					 
+					</div>
+					<div class="col-md-6 roles">
+                            <label for="roles">Service Charge per Day</label>
+                            <input type="text" name="service_charge" class="form-control" id="service_charge" placeholder="" autocomplete="off" maxlength="50">
+                        </div>
+					
+					</div>
+					<div class="row">
+					<div class="col-md-6 roles">
+                            <label for="required_skills">Required Skills Set </label>
+                            <input type="text" name="required_skills" class="form-control" id="required_skills" placeholder="" autocomplete="off" maxlength="50">
+                        </div>
+						<div class="col-md-6 roles">
+                            <label for="description">Description</label>
+                            <textarea name="description" class="form-control" id="description" placeholder="" autocomplete="off" maxlength="50"></textarea>
+                        </div>
+					</div>
+					 <div class="form-group"  align="center" style="margin-top:14px;">
                       <button type="submit" id="submit" class="btn btn-primary btn-md">Save</button>
                       <button type="button" class="btn  btn-md btn-danger" data-dismiss="modal" onclick="closeform()" role="button" onclick="formreload()">Close</button>
-                </div>
-		</form>
+                    </div>
+					</form>
 					
     </div>
   </div>
@@ -321,14 +394,14 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/js/dashboard.js"></script>
-  <script src="assets/application/category.js"></script>
+   <script src="assets/application/jobtype.js"></script>
   <!-- End custom js for this page-->
 </body>
 
 </html>
+
 <style type="text/css">
 .error{
 	color:red;
 }
 </style>
-

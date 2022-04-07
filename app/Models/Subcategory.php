@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Category extends Model
+class Subcategory extends Model
 {
     
 
    
-    protected $table = 'category';
-    protected $primaryKey = 'cat_id';
+    protected $table = 'sub_category';
+    protected $primaryKey = 'sub_cat_id ';
     
       const CREATED_AT = 'added_at';
       const UPDATED_AT = 'updated_at';
@@ -19,9 +19,12 @@ class Category extends Model
 
     protected $fillable = [
        
+        'sub_cat_id ',
         'cat_id',
-        'cat_name',
-        'status',
+        'sub_cat_name',
+		'is_certificate',
+		'certficate',
+		'status',
         'added_at',
         'updated_at'
     ];

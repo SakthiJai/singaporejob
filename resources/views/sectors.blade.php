@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layout.mainheader')
-
+@push('plugin-styles')
+  <!-- {!! Html::style('/assets/plugins/plugin.css') !!} -->
+  {!! Html::style('/assets/css/datatables.min.css') !!}
+@endpush
 <body>
  
   <div class="container-scroller">
@@ -217,17 +220,15 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="table-responsive pt-3">
-                  <table class="table table-striped project-orders-table" id="category_table">
+                  <table class="table table-striped project-orders-table" id="sectors_table">
                     <thead>
                       <tr>
                         <th class="ml-5">ID</th>
-                        <th>Category name</th>
+                        <th>Sectors name</th>
                         <th>Status</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
                   </table>
                 </div>
               </div>
@@ -267,16 +268,16 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content" style="width:45%; margin-left:13%;">
 	<div class="modal-header" style="background-color: #21beb3;">
-	<h5 class="" >Add Category</h5>
+	<h5 class="" >Add Sectors</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-	   <form id="category_form" style="padding: 4px 13px;">
+	   <form id="sectors_form" style="padding: 4px 13px;">
 	   {{ csrf_field() }}
 				<div class="row">
 						<input type="hidden" value="" id="id" name="id"/> 
 						<div class="col-md-6 roles">
-                            <label for="roles">Category</label>
-                            <input type="text" name="category" class="form-control" id="category" placeholder="" autocomplete="off" maxlength="50">
+                            <label for="roles">Sectors</label>
+                            <input type="text" name="sectors" class="form-control" id="sectors" placeholder="" autocomplete="off" maxlength="50">
                         </div>
 						<div class="col-md-6">
 							
@@ -321,7 +322,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/js/dashboard.js"></script>
-  <script src="assets/application/category.js"></script>
+  <script src="assets/application/sectors.js"></script>
   <!-- End custom js for this page-->
 </body>
 

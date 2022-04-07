@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ChatMessages as Message;
-use App\Models\Category;
+use App\Models\Sectors;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-class CategoryController extends Controller
+class SectorsController extends Controller
 
 //use Illuminate\Support\Facades\Validator;
 
@@ -19,9 +19,9 @@ class CategoryController extends Controller
     }
 
     
-    public function addcategory(Request $request){
-		$insert=Category::create([
-            'cat_name' =>$request->category,
+    public function addsectors(Request $request){
+		$insert=Sectors::create([
+            'sectors_name' =>$request->sectors,
             'status'=>'1']);
         if($insert){
             
@@ -31,12 +31,11 @@ class CategoryController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-     public function getcategoryList(Request $request)
+     public function getsectorslist(Request $request)
     {
 		  $sql="SELECT * 
-    FROM `categories`
-	where active !=3
-     order by added_at DESC";
+			FROM `sectors`
+			order by added_at DESC";
 		 $categoryList = DB::select($sql);
         
         return response()->json($categoryList);

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ChatMessages as Message;
-use App\Models\Warehouse;
-
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-class WarehouseController extends Controller
+class SubcategoryController extends Controller
+
+//use Illuminate\Support\Facades\Validator;
+
 {
      public function __construct()
     {
@@ -17,12 +19,13 @@ class WarehouseController extends Controller
     }
 
     
-    public function addwarehouse(Request $request){
-         //print_r($request);exit();
-        
-         $insert=Warehouse::create([
-            'name' =>$request->warehouse,
-            'active'=>'1']);
+    public function addSubcategory(Request $request){
+		$insert=Subcategory::create([
+            'cat_id' =>$request->category,
+			'sub_cat_name' =>$request->sub_category,
+			'is_certificate' =>$request->certificate,
+			'certficate' =>$request->certificate_name,
+            'status'=>'1']);
         if($insert){
             
                return response()->json(['result' =>'Success']);
@@ -31,28 +34,38 @@ class WarehouseController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-     public function getwarehouseList(Request $request)
+     public function getcategoryname(Request $request)
     {
-		 $sql="SELECT * FROM `stores`
-where active !=3		 
-   order by added_at desc";
-		
-		 $warehouseList = DB::select($sql);
-        return response()->json($warehouseList);
+		  $sql="SELECT * 
+			FROM category
+			order by added_at DESC";
+		 $categoryList = DB::select($sql);
+        
+        return response()->json($categoryList);
     }
-    public function editwarehouseList(Request $request)
+	public function getsubcategorylist(Request $request)
     {
-        $warehouseList = Warehouse::where('id',$request->id)->first();
-        return response()->json($warehouseList);
+		  $sql="SELECT B.cat_name
+			FROM sub_category A
+			left join category B.cat_id   = A.cat_id
+			order by added_at DESC";
+		 $categoryList = DB::select($sql);
+        
+        return response()->json($categoryList);
     }
-    public function updatewarehouseList(Request $request){
+    public function editcategoryList(Request $request)
+    {
+        $petList = Category::where('id',$request->id)->first();
+        return response()->json($petList);
+    }
+    public function updatecategoryList(Request $request){
          
          $id=$request->id;
          $data=array(
-            'name' => $request->warehouse
+            'name' => $request->category
          );
 
-        $update=  Warehouse::where('id',$id)->update($data);
+        $update=  Category::where('id',$id)->update($data);
         if($update){
             
                return response()->json(['result' =>'Success']);
@@ -61,13 +74,14 @@ where active !=3
               return response()->json(['result'=>'failed']);
         }
     }
-    public function deletewarehouse(Request $request){
+    public function deletecategory(Request $request){
          
          $id=$request->id;
 		$data=array(
             'active' =>3
          );
-        $delete= Warehouse::where('id',$id)->update($data);
+
+        $delete= Category::where('id',$id)->update($data);
         if($delete){
             
                return response()->json('Success');
@@ -76,7 +90,7 @@ where active !=3
               return response()->json('failed');
         }
     }
-     public function warehousestatus(Request $request){
+	public function categoriestatus(Request $request){
          
          $id=$request->id;
          $status=$request->status;
@@ -89,7 +103,7 @@ where active !=3
          $data=array(
             'active' =>($request->status==1?2:1)
          );
-        $update=Warehouse::where('id',$id)->update($data);
+        $update=Category::where('id',$id)->update($data);
         if($update){
            
                return response()->json(['result' =>'true']);
@@ -97,6 +111,7 @@ where active !=3
                
               return response()->json(['result'=>'false']);
         }
-    }   
+    }
+        
 
 }

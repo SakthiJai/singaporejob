@@ -186,9 +186,9 @@
 			<div class="row">
   <div class="col-lg-12 grid-margin">
     <div class="card">
-	<div class="card-header d-flex justify-content-between">
+	<div class="card-header d-flex justify-content-between"style="background-color: white; border-bottom: 0px solid #e4e4f4;">
                         <div class="header-title">
-                            <h4 class="card-title">Vendors</h4>
+                            <h4 class="card-title"></h4>
                         </div>
                     </div>
       <div class="card-body">
@@ -203,8 +203,9 @@
         </span>
       </header> -->
        <header class="panel-heading" >&nbsp;&nbsp;&nbsp;
+	   
 		<button type="button" class="btn btn-success" data-toggle="modal" style="margin-bottom: 0px;float:right; background-color: #32BDEA;
-    border-color: #32BDEA; " data-target=".bd-example-modal-lg" onclick="addPet()">Add Vendor</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
+    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg" onclick="addPet()">Add Job</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
 
          <span class="tools pull-right">
           <a href="javascript:;" class="fa fa-chevron-down" style="visibility: hidden !important;"></a>
@@ -212,22 +213,129 @@
         </span>
       </header>
         
-        <div class="table-responsive1">
-          <table class="table table-bordered" id="vendorsTable">
-            <thead>
-              <tr>
-                <th>S.No</th>
-				<th>Vendors Name</th>
-                <th>Sales Value</th>
-				<th>Invoice No</th>
-				<th>Due Date</th>
-                <th>Action</th>
-               
-              </tr>
-            </thead>
-            
-          </table>
-        </div>
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="table-responsive pt-3">
+                  <table class="table table-striped project-orders-table">
+                    <thead>
+                      <tr>
+                        <th class="ml-5">ID</th>
+                        <th>Project name</th>
+                        <th>Customer</th>
+                        <th>Deadline</th>
+                        <th>Payouts	</th>
+                        <th>Traffic</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>#D1</td>
+                        <td>Consectetur adipisicing elit </td>
+                        <td>Beulah Cummings</td>
+                        <td>03 Jan 2019</td>
+                        <td>$ 5235</td>
+                        <td>1.3K</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                              Edit
+                              <i class="typcn typcn-edit btn-icon-append"></i>                          
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                              Delete
+                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#D2</td>
+                        <td>Correlation natural resources silo</td>
+                        <td>Mitchel Dunford</td>
+                        <td>09 Oct 2019</td>
+                        <td>$ 3233</td>
+                        <td>5.4K</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                              Edit
+                              <i class="typcn typcn-edit btn-icon-append"></i>                          
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                              Delete
+                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#D3</td>
+                        <td>social capital compassion social</td>
+                        <td>Pei Canaday</td>
+                        <td>18 Jun 2019</td>
+                        <td>$ 4311</td>
+                        <td>2.1K</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                              Edit
+                              <i class="typcn typcn-edit btn-icon-append"></i>                          
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                              Delete
+                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#D4</td>
+                        <td>empower communities thought</td>
+                        <td>Gaynell Sharpton</td>
+                        <td>23 Mar 2019</td>
+                        <td>$ 7743</td>
+                        <td>2.7K</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                              Edit
+                              <i class="typcn typcn-edit btn-icon-append"></i>                          
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                              Delete
+                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#D5</td>
+                        <td> Targeted effective; mobilize </td>
+                        <td>Audrie Midyett</td>
+                        <td>22 Aug 2019</td>
+                        <td>$ 2455</td>
+                        <td>1.2K</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
+                              Edit
+                              <i class="typcn typcn-edit btn-icon-append"></i>                          
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
+                              Delete
+                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -257,6 +365,111 @@
   </div>
   </div>
 </div>
+          <!-------Add modal---->
+		  <div class="modal fade bd-example-modal-lg" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width:77%; margin-left:13%;">
+	<div class="modal-header" style="background-color: #21beb3;">
+	<h4 class="modal-title" style="float: left;"></h4>
+	<h5 class="modal-title" id="lineModalLabel">Add Job</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+	   <form id="vendors_form" style="padding: 4px 13px;">
+					<div class="row">
+					<input type="hidden" value="" id="id" name="id"/> 
+							<div class="col-md-6 roles">
+                            <label for="roles">Job Title</label>
+                            <input type="text" name="job_title" class="form-control" id="job_title" placeholder="" autocomplete="off" maxlength="50">
+                        </div>
+						<div class="col-md-6">
+						<div class="form-group">
+                      <label for="exampleSelectGender">Job Sectors</label>
+                        <select class="form-control" id="job_Sectors">
+						 <option value="">Select</option>
+                          <option>Construction Sectors</option>
+                          <option>Marine&Process Sectors</option>
+						  <option>Maufacturing Sectors</option>
+						  <option>Service Sectors</option>
+                        </select>
+                      </div>
+					  </div>
+                    </div>
+					<div class="row">
+					
+				  <div class="col-md-6">
+					<div class="form-group">
+                      <label for="exampleSelectGender">Sub Category</label>
+                        <select class="form-control" id="sub_Category">
+						 <option value="">Select</option>
+                          <option>General Worker</option>
+						   <option>Excavtive Operator</option>
+						    <option>Lifting Supervisor</option>
+							 <option>Timing From Worker</option>
+							  <option>Welding Mig/TIG</option>
+                        </select>
+                      </div>
+					  </div>
+					   <div class="col-md-6">
+						<div class="form-group">
+                      <label for="exampleSelectGender">Job Category</label>
+                        <select class="form-control" id="job_Category">
+						 <option value="">Select</option>
+                          <option>Construction</option>
+                        </select>
+                      </div>
+					  </div>
+					</div>
+					<div class="row">
+					<div class="col-sm-6">
+						 <div class="form-group">
+						 <p>Job Min Experience</p>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
+                              0-3
+                            </label>
+							</div>
+							<div class="form-check">
+							<label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="">
+                              3-6
+                            </label>
+							</div>
+							<div class="form-check">
+							<label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="">
+                              6-7
+                            </label>
+                          </div>
+					</div>
+					 
+					</div>
+					<div class="col-md-6 roles">
+                            <label for="roles">Service Change per Day</label>
+                            <input type="text" name="job_title" class="form-control" id="job_title" placeholder="" autocomplete="off" maxlength="50">
+                        </div>
+					
+					</div>
+					<div class="row">
+					<div class="col-md-6 roles">
+                            <label for="required_skills">Required Skills Set </label>
+                            <input type="text" name="required_skills" class="form-control" id="required_skills" placeholder="" autocomplete="off" maxlength="50">
+                        </div>
+						<div class="col-md-6 roles">
+                            <label for="description">Description</label>
+                            <textarea name="description" class="form-control" id="description" placeholder="" autocomplete="off" maxlength="50"></textarea>
+                        </div>
+					</div>
+					 <div class="form-group"  align="center" style="margin-top:14px;">
+                      <button type="submit" id="submit" class="btn btn-primary btn-md">Save</button>
+                      <button type="button" class="btn  btn-md btn-danger" data-dismiss="modal" onclick="closeform()" role="button" onclick="formreload()">Close</button>
+                    </div>
+					</form>
+					
+    </div>
+  </div>
+</div>
+
          </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
