@@ -90,7 +90,7 @@ class SubcategoryController extends Controller
               return response()->json('failed');
         }
     }
-	public function categoriestatus(Request $request){
+	public function subcategoryStatus(Request $request){
          
          $id=$request->id;
          $status=$request->status;
@@ -101,9 +101,9 @@ class SubcategoryController extends Controller
              $active=1;
          }
          $data=array(
-            'active' =>($request->status==1?2:1)
+            'status' =>($request->status==1?2:1)
          );
-        $update=Category::where('id',$id)->update($data);
+        $update=Subcategory::where('sub_cat_id',$id)->update($data);
         if($update){
            
                return response()->json(['result' =>'true']);

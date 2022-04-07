@@ -77,20 +77,20 @@ class SectorsController extends Controller
               return response()->json('failed');
         }
     }
-	public function categoriestatus(Request $request){
+	public function sectorsStatus(Request $request){
          
          $id=$request->id;
          $status=$request->status;
         
          if($status==1){
             $active=2;
-         }elseif($status==2){
+         }else if($status==2){
              $active=1;
          }
          $data=array(
-            'active' =>($request->status==1?2:1)
+            'status' =>($request->status==1?2:1)
          );
-        $update=Category::where('id',$id)->update($data);
+        $update=Sectors::where('sectors_id',$id)->update($data);
         if($update){
            
                return response()->json(['result' =>'true']);

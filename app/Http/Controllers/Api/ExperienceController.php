@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ChatMessages as Message;
-use App\Models\Items;
-
+use App\Models\Experience;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class ItemsController extends Controller
+class ExperienceController extends Controller
 {
      public function __construct()
     {
@@ -18,12 +17,12 @@ class ItemsController extends Controller
     }
 
     
-    public function additems(Request $request){
+    public function addexperience(Request $request){
          //print_r($request);exit();
         
-         $insert=Items::create([
-            'name' =>$request->items,
-            'active'=>'1']);
+         $insert=Experience::create([
+            'exp_range' =>$request->experience_range,
+            'status'=>'1']);
         if($insert){
             
                return response()->json(['result' =>'Success']);
@@ -32,10 +31,10 @@ class ItemsController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-     public function getitemsList(Request $request)
+     public function getexperiencelist(Request $request)
     {
-		 $sql="SELECT * FROM `brands`
-		 where active !=3
+		 $sql="SELECT * FROM `experiencerange`
+		 where status !=3
 		ORDER BY added_at DESC";
 		
 		$itemsList = DB::select($sql);
@@ -77,7 +76,7 @@ class ItemsController extends Controller
               return response()->json('failed');
         }
     }
-	 public function itemsStatus(Request $request){
+	 public function experienceStatus(Request $request){
          
          $id=$request->id;
          $status=$request->status;
@@ -89,9 +88,9 @@ class ItemsController extends Controller
              $active=1;
          }
          $data=array(
-            'active' =>($request->status==1?2:1)
+            'status' =>($request->status==1?2:1)
          );
-        $update=Items::where('id',$id)->update($data);
+        $update=Experience::where('exp_id',$id)->update($data);
        
         if($update){
            

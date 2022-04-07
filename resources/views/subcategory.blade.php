@@ -3,7 +3,7 @@
 @include('layout.mainheader')
 
 <body>
- 
+ <meta name="csrf-token" content="{{ csrf_token() }}" />
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     @include('layout.topsidebar')
@@ -223,6 +223,7 @@
                         <th>ID</th>
                         <th>Category</th>
                         <th>Sub Category</th>
+						<th>Status</th>
                         <th>Actions</th>
                       </tr>
                     </thead>

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Items extends Model
+class Experience extends Model
 {
     
 
    
-    protected $table = 'brands';
-    protected $primaryKey = 'id';
+    protected $table = 'experiencerange';
+    protected $primaryKey = 'exp_id ';
     
         const CREATED_AT = 'added_at';
       const UPDATED_AT = 'updated_at';
@@ -20,9 +20,9 @@ class Items extends Model
 
     protected $fillable = [
        
-        'id',
-        'name',
-        'active',
+        'exp_id ',
+        'exp_range',
+        'status',
         'added_at',
         'updated_at'
     ];

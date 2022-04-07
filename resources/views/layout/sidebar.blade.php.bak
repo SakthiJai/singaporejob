@@ -7,10 +7,10 @@
               <div class="badge badge-danger">new</div>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link"  href="{{url('/jobtype')}}">
+		  <li class="nav-item">
+            <a class="nav-link"  href="{{url('/sectors')}}">
               <i class="typcn typcn-document-text menu-icon"></i>
-              <span class="menu-title">Job Type</span>
+              <span class="menu-title">Sectors</span>
               
             </a>
           </li>
@@ -33,6 +33,13 @@
               <i class="typcn typcn-document-text menu-icon"></i>
               <span class="menu-title">Experience Range</span>
              
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link"  href="{{url('/jobtype')}}">
+              <i class="typcn typcn-document-text menu-icon"></i>
+              <span class="menu-title">Job Type</span>
+              
             </a>
           </li>
          <!-- <li class="nav-item">

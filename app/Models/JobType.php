@@ -10,11 +10,11 @@ class JobType extends Model
     
 
    
-    protected $table = 'job_type';
+    protected $table = 'job_list';
     protected $primaryKey = 'id ';
     
       const CREATED_AT = 'added_at';
-      const UPDATED_AT = 'updated_at';
+      const UPDATED_AT = 'modified_at';
 
 
     protected $fillable = [
@@ -30,7 +30,7 @@ class JobType extends Model
 		'description',
 		'status',
 		'added_at',
-		'updated_at'
+		'modified_at'
     ];
 
 

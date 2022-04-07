@@ -1,21 +1,8 @@
 console.log('test');
-getcategory();
-$('#hide').hide();
-$('#certificate').click(function(){
-  var text=$('#certificate').val();
-   console.log(text);
-   if ($('#certificate').is(":checked"))
-	{	
-		$('#hide').show();
-	}
-else {
-	 $('#hide').hide();
-}
-});
-getsubcategorylist();
-function getsubcategorylist() {
+getexperiencelist();
+function getexperiencelist() {
    $.ajax({
-        url:"getsubcategorylist",
+        url:"getexperiencelist",
         type: "GET",
         data:{_token: $('meta[name="_token"]').attr('content')},
 		dataType: "JSON",
@@ -25,11 +12,12 @@ function getsubcategorylist() {
         },
         success: function(data)
         {
-			var i=0;
+			var i=1;
 			var details =  JSON.parse(JSON.stringify(data));
+			
          details.forEach(function(element) {
-			 i=i+1;
 			 if(element.status==1){
+
                        var button='Active';
                        var label='Inactive';
                        var color='btn btn-primary btn-sm';
@@ -39,31 +27,8 @@ function getsubcategorylist() {
                       var label='active';
                       var color='btn  btn-sm btn-danger';
                     }
-           $("#subcategory_table").append('<tbody><tr><td>'+i+'</td><td>'+element.cat_name+'</td><td>'+element.sub_cat_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="subcategoryStatus('+element.sub_cat_id+','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
-        });
-           
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            alert('Error get data from ajax');
-        }
-    });
-}
-function getcategory() {
-   $.ajax({
-        url:"getcategoryname",
-        type: "GET",
-        data:{_token: $('meta[name="_token"]').attr('content')},
-		dataType: "JSON",
-        cache: false,
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(data)
-        {
-			var details =  JSON.parse(JSON.stringify(data));
-         details.forEach(function(element) {
-           $("#category").append('<option value="'+element.cat_id +'">'+element.cat_name+'</option>');
+			 i=i+1;
+           $("#experience_table").append('<tbody><tr><td>'+i+'</td><td>'+element.exp_range+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="experienceStatus('+element.exp_id +','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
         });
            
         },
@@ -74,24 +39,17 @@ function getcategory() {
     });
 }
 $(document).ready(function(){
-$('#subcategory_form').validate({
+$('#experience_form').validate({
     rules: {
-		category: 
-        {
-            required: true,
-        },
-		sub_category: 
+		experience_range: 
         {
             required: true,
         },
 		
     },
 messages : {
-    category: {
-    required: "Select The Category"
-    },
-	sub_category: {
-    required: "Enter The Sub Category"
+    experience_range: {
+    required: "Enter The Experience"
     },
 	
  },
@@ -105,11 +63,17 @@ messages : {
     submitHandler: function (form) {
             
      
-      var formdata=$("#subcategory_form").serialize();
+      var formdata=$("#experience_form").serialize();
    $.ajax({
 			type: "POST",
-            url:"addSubcategory",
+            url:"addexperience",
 			data: formdata,
+			//dataType: "JSON",
+			//cache: false,
+			//dataType: 'json',
+			//async:false,	
+			//contentType: false,
+			//processData: false,		// serializes the form's elements.
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -232,26 +196,26 @@ function deletecategoryList(id)
         
     });
   }  
-function subcategoryStatus(id,status){
+function addPet() {
+	//$('#categoryForm')[0].reset();
+	$("#category-error").hide();
+	$("#modal_form").modal('show');
+	$('.modal-title').text('Add Category');
+}
+function experienceStatus(id,status){
  //alert(status);
     $.ajax({
-         url:"subcategoryStatus", 
+         url:"experienceStatus", 
         type: "post",
         data:{id:id,status:status,_token: $('meta[name="_token"]').attr('content')},
         dataType: "JSON",
-        dataType: "JSON",
-        //cache: false,
-			//dataType: 'json',
-			//async:false,	
-			//contentType: false,
-			//processData: false,		// serializes the form's elements.
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },	
         success: function(data)
         {
           
-            if(data.result=='true'){
+            if(data.result=='True'){
              location.reload();
             }else{
                  console.log('failed'); 

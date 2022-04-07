@@ -100,7 +100,7 @@ class JobtypeController extends Controller
               return response()->json('failed');
         }
     }
-     public function warehousestatus(Request $request){
+     public function jobtypeStatus(Request $request){
          
          $id=$request->id;
          $status=$request->status;
@@ -111,9 +111,9 @@ class JobtypeController extends Controller
              $active=1;
          }
          $data=array(
-            'active' =>($request->status==1?2:1)
+            'status' =>($request->status==1?2:1)
          );
-        $update=Warehouse::where('id',$id)->update($data);
+        $update=JobType::where('job_id',$id)->update($data);
         if($update){
            
                return response()->json(['result' =>'true']);
