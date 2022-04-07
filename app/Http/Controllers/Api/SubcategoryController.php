@@ -45,10 +45,10 @@ class SubcategoryController extends Controller
     }
 	public function getsubcategorylist(Request $request)
     {
-		  $sql="SELECT B.cat_name
+		  $sql="SELECT B.cat_name,A.sub_cat_id ,A.cat_id,A.sub_cat_name,A.is_certificate,A.certficate,A.status
 			FROM sub_category A
-			left join category B.cat_id   = A.cat_id
-			order by added_at DESC";
+			left join category B ON B.cat_id   = A.cat_id
+			order by A.added_at DESC";
 		 $categoryList = DB::select($sql);
         
         return response()->json($categoryList);

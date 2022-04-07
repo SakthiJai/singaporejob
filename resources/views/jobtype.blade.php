@@ -315,9 +315,9 @@
 					  </div>
 					</div>
 					<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						 <div class="form-group">
-						 <p>Required Experience</p>
+						 <p>Experience Range</p>
                           <div class="form-check">
                             <label class="form-check-label">
                               <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios1" value="1">
@@ -339,20 +339,20 @@
 					</div>
 					 
 					</div>
-					<div class="col-md-6 roles">
+					<div class="col-md-4 roles">
                             <label for="roles">Service Charge per Day</label>
                             <input type="text" name="service_charge" class="form-control" id="service_charge" placeholder="" autocomplete="off" maxlength="50">
                         </div>
-					
-					</div>
-					<div class="row">
-					<div class="col-md-6 roles">
+					<div class="col-md-4 roles">
                             <label for="required_skills">Required Skills Set </label>
                             <input type="text" name="required_skills" class="form-control" id="required_skills" placeholder="" autocomplete="off" maxlength="50">
                         </div>
-						<div class="col-md-6 roles">
+					</div>
+					<div class="row">
+					
+						<div class="col-md-12 roles">
                             <label for="description">Description</label>
-                            <textarea name="description" class="form-control" id="description" placeholder="" autocomplete="off" maxlength="50"></textarea>
+							 <textarea id="description" name="description" class="form-control" ></textarea>
                         </div>
 					</div>
 					 <div class="form-group"  align="center" style="margin-top:14px;">
@@ -376,9 +376,11 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+  <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js" defer></script>
+
   <!-- base:js -->
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -399,7 +401,11 @@
 </body>
 
 </html>
-
+<script type="text/javascript">
+$( document ).ready(function() {
+   CKEDITOR.replace('description');
+});
+</script>
 <style type="text/css">
 .error{
 	color:red;
