@@ -205,7 +205,7 @@
        <header class="panel-heading" >&nbsp;&nbsp;&nbsp;
 	   
 		<button type="button" class="btn btn-success" data-toggle="modal" style="margin-bottom: 0px;float:right; background-color: #32BDEA;
-    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg" onclick="addPet()">Add Job</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
+    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg" onclick="addPet()"> Add Experience Range</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
 
          <span class="tools pull-right">
           <a href="javascript:;" class="fa fa-chevron-down" style="visibility: hidden !important;"></a>
@@ -367,99 +367,19 @@
 </div>
           <!-------Add modal---->
 		  <div class="modal fade bd-example-modal-lg" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" style="width:77%; margin-left:13%;">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content" style="width:100%;">
 	<div class="modal-header" style="background-color: #21beb3;">
 	<h4 class="modal-title" style="float: left;"></h4>
-	<h5 class="modal-title" id="lineModalLabel">Add Job</h5>
+	<h5 class="modal-title" id="lineModalLabel">Experience Range</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-	   <form id="vendors_form" style="padding: 4px 13px;">
-					<div class="row">
-					<input type="hidden" value="" id="id" name="id"/> 
-							<div class="col-md-6 roles">
-                            <label for="roles">Job Title</label>
-                            <input type="text" name="job_title" class="form-control" id="job_title" placeholder="" autocomplete="off" maxlength="50">
-                        </div>
-						<div class="col-md-6">
-						<div class="form-group">
-                      <label for="exampleSelectGender">Job Sectors</label>
-                        <select class="form-control" id="job_Sectors">
-						 <option value="">Select</option>
-                          <option>Construction Sectors</option>
-                          <option>Marine&Process Sectors</option>
-						  <option>Maufacturing Sectors</option>
-						  <option>Service Sectors</option>
-                        </select>
-                      </div>
-					  </div>
-                    </div>
-					<div class="row">
-					
-				  <div class="col-md-6">
-					<div class="form-group">
-                      <label for="exampleSelectGender">Sub Category</label>
-                        <select class="form-control" id="sub_Category">
-						 <option value="">Select</option>
-                          <option>General Worker</option>
-						   <option>Excavtive Operator</option>
-						    <option>Lifting Supervisor</option>
-							 <option>Timing From Worker</option>
-							  <option>Welding Mig/TIG</option>
-                        </select>
-                      </div>
-					  </div>
-					   <div class="col-md-6">
-						<div class="form-group">
-                      <label for="exampleSelectGender">Job Category</label>
-                        <select class="form-control" id="job_Category">
-						 <option value="">Select</option>
-                          <option>Construction</option>
-                        </select>
-                      </div>
-					  </div>
-					</div>
-					<div class="row">
-					<div class="col-sm-6">
-						 <div class="form-group">
-						 <p>Job Min Experience</p>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                              0-3
-                            </label>
-							</div>
-							<div class="form-check">
-							<label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="">
-                              3-6
-                            </label>
-							</div>
-							<div class="form-check">
-							<label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="">
-                              6-7
-                            </label>
-                          </div>
-					</div>
-					 
-					</div>
-					<div class="col-md-6 roles">
-                            <label for="roles">Service Change per Day</label>
-                            <input type="text" name="job_title" class="form-control" id="job_title" placeholder="" autocomplete="off" maxlength="50">
+	   <form id="experience_range" style="padding: 4px 13px;">
+							<div class="col-md-12 roles">
+                            <label for="roles">Experience Range</label>
+                            <input type="text" name="experience_range" class="form-control" id="experience_range" placeholder="" autocomplete="off" maxlength="50">
                         </div>
 					
-					</div>
-					<div class="row">
-					<div class="col-md-6 roles">
-                            <label for="required_skills">Required Skills Set </label>
-                            <input type="text" name="required_skills" class="form-control" id="required_skills" placeholder="" autocomplete="off" maxlength="50">
-                        </div>
-						<div class="col-md-6 roles">
-                            <label for="description">Description</label>
-                            <textarea name="description" class="form-control" id="description" placeholder="" autocomplete="off" maxlength="50"></textarea>
-                        </div>
-					</div>
 					 <div class="form-group"  align="center" style="margin-top:14px;">
                       <button type="submit" id="submit" class="btn btn-primary btn-md">Save</button>
                       <button type="button" class="btn  btn-md btn-danger" data-dismiss="modal" onclick="closeform()" role="button" onclick="formreload()">Close</button>
@@ -481,7 +401,9 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js" defer></script>
   <!-- base:js -->
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -497,8 +419,14 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/js/dashboard.js"></script>
+  <script src="assets/application/experiencerange.js"></script>
   <!-- End custom js for this page-->
 </body>
 
 </html>
+<style>
+#experience_range-error{
+	color:red;
+}
+</style>
 
