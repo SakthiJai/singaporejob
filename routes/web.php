@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\JobtypeController as Jobtype;
 use App\Http\Controllers\Api\CategoryController as Category;
 use App\Http\Controllers\Api\SectorsController as Sectors;
 use App\Http\Controllers\Api\SubcategoryController as Subcategory;
+use App\Http\Controllers\Api\ExperienceController as Experience;
 use App\Http\Controllers\Api\AuthController as Auth;
 use App\Http\Controllers\Api\UserController as User;
 use App\Http\Controllers\Api\SettingsController as Settings;
@@ -68,6 +69,10 @@ Route::get('/getsectorslist', [Sectors::class, 'getsectorslist']);
 Route::post('/addSubcategory', [Subcategory::class, 'addSubcategory']);
 Route::get('/getcategoryname', [Subcategory::class, 'getcategoryname']);
 Route::get('/getsubcategorylist', [Subcategory::class, 'getsubcategorylist']);
+
+Route::post('/addexperience', [Experience::class, 'addexperience']);
+Route::get('/getexperiencelist', [Experience::class, 'getexperiencelist']);
+Route::post('/experienceStatus', [Experience::class, 'experienceStatus']);
 
 Route::get('adminlogout',[Admin::class, 'logout']);
 

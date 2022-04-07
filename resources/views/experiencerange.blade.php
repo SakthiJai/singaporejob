@@ -3,7 +3,7 @@
 @include('layout.mainheader')
 
 <body>
- 
+ <meta name="csrf-token" content="{{ csrf_token() }}" />
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     @include('layout.topsidebar')
@@ -205,7 +205,7 @@
        <header class="panel-heading" >&nbsp;&nbsp;&nbsp;
 	   
 		<button type="button" class="btn btn-success" data-toggle="modal" style="margin-bottom: 0px;float:right; background-color: #32BDEA;
-    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg" onclick="addPet()"> Add Experience Range</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
+    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg" onclick="addPet()">Add Experience</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
 
          <span class="tools pull-right">
           <a href="javascript:;" class="fa fa-chevron-down" style="visibility: hidden !important;"></a>
@@ -217,119 +217,16 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="table-responsive pt-3">
-                  <table class="table table-striped project-orders-table">
+                  <table class="table table-striped project-orders-table" id="experience_table">
                     <thead>
                       <tr>
                         <th class="ml-5">ID</th>
-                        <th>Project name</th>
-                        <th>Customer</th>
-                        <th>Deadline</th>
-                        <th>Payouts	</th>
-                        <th>Traffic</th>
+                        <th>Experience Range</th>
+						<th>Status</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>#D1</td>
-                        <td>Consectetur adipisicing elit </td>
-                        <td>Beulah Cummings</td>
-                        <td>03 Jan 2019</td>
-                        <td>$ 5235</td>
-                        <td>1.3K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D2</td>
-                        <td>Correlation natural resources silo</td>
-                        <td>Mitchel Dunford</td>
-                        <td>09 Oct 2019</td>
-                        <td>$ 3233</td>
-                        <td>5.4K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D3</td>
-                        <td>social capital compassion social</td>
-                        <td>Pei Canaday</td>
-                        <td>18 Jun 2019</td>
-                        <td>$ 4311</td>
-                        <td>2.1K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D4</td>
-                        <td>empower communities thought</td>
-                        <td>Gaynell Sharpton</td>
-                        <td>23 Mar 2019</td>
-                        <td>$ 7743</td>
-                        <td>2.7K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D5</td>
-                        <td> Targeted effective; mobilize </td>
-                        <td>Audrie Midyett</td>
-                        <td>22 Aug 2019</td>
-                        <td>$ 2455</td>
-                        <td>1.2K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -367,19 +264,22 @@
 </div>
           <!-------Add modal---->
 		  <div class="modal fade bd-example-modal-lg" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content" style="width:100%;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width:35%; margin-left:13%;">
 	<div class="modal-header" style="background-color: #21beb3;">
-	<h4 class="modal-title" style="float: left;"></h4>
-	<h5 class="modal-title" id="lineModalLabel">Experience Range</h5>
+	<h5 class="" id="">Add Experience</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-	   <form id="experience_range" style="padding: 4px 13px;">
-							<div class="col-md-12 roles">
+			
+	   <form id="experience_form" style="padding: 4px 13px;">
+	    {{ csrf_field() }}
+					<div class="row">
+					<input type="hidden" value="" id="id" name="id"/> 
+							<div class="col-md-6 roles">
                             <label for="roles">Experience Range</label>
-                            <input type="text" name="experience_range" class="form-control" id="experience_range" placeholder="" autocomplete="off" maxlength="50">
+                            <input type="text" name="experience_range" class="form-control" id="experience_range" placeholder=""  onkeypress="return Validate(event);"  autocomplete="off" maxlength="50">
                         </div>
-					
+                    </div>
 					 <div class="form-group"  align="center" style="margin-top:14px;">
                       <button type="submit" id="submit" class="btn btn-primary btn-md">Save</button>
                       <button type="button" class="btn  btn-md btn-danger" data-dismiss="modal" onclick="closeform()" role="button" onclick="formreload()">Close</button>
@@ -419,14 +319,24 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="assets/js/dashboard.js"></script>
-  <script src="assets/application/experiencerange.js"></script>
+  <script src="assets/application/experience.js"></script>
   <!-- End custom js for this page-->
 </body>
 
 </html>
-<style>
-#experience_range-error{
+
+<style type="text/css">
+.error{
 	color:red;
 }
 </style>
-
+<script type="text/javascript">
+function Validate(event) {
+        var regex = new RegExp("^[0-9-!@#$%*?]");
+        var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
+        }
+    }  
+</script>
