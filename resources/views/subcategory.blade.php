@@ -267,7 +267,7 @@
 		  <div class="modal fade bd-example-modal-lg" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" style="width:77%; margin-left:13%;">
-	<div class="modal-header" style="background-color: #21beb3;">
+	<div class="modal-header" style="background-color: #21beb3;margin-bottom: 22px;">
 	<h4 class="modal-title" style="float: left;"></h4>
 	<h5 class="modal-title" id="lineModalLabel">Add Sub Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -289,18 +289,30 @@
                             <input type="text" name="sub_category" class="form-control" id="sub_category" placeholder="" autocomplete="off" maxlength="50">
 						</div>
                     </div>
-					<div class="row">
-					<div class="col-md-6">
-							<div class="form-group">
-							 <label for="roles">Certificate Requried</label>
-							<input type="checkbox" id="certificate" name="certificate" value="1" >
-						  </div>
+					<label for="roles">Education Requried</label>
+					<div class="row" id="education_requried">
+					</div>
+					<div class="row" >
+					<div class="col-md-6" style="margin-top: 26px;">
+						  <label >Cretificate</label>
+						  <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input" id="certificate" name="certificate" value="1">
+                             Certificate Requried
+                            </label>
+                          </div>
 					  </div>					
-						<div class="col-md-6 roles" id="hide">
+						<div class="col-md-6 roles">
+						</div>
+                    </div>
+					<div class="row">
+					<div class="col-md-6 roles" id="hide" style="margin-top: 26px;">
                             <label for="roles">Certificate Name</label>
                             <input type="text" name="certificate_name" class="form-control" id="certificate_name" placeholder="" autocomplete="off" maxlength="50">
 						</div>
-                    </div>
+						<div class="col-md-6 roles" >
+						</div>
+					</div>
 					<div class="form-group"  align="center" style="margin-top:14px;">
                       <button type="submit" id="submit" class="btn btn-primary btn-md">Save</button>
                       <button type="button" class="btn  btn-md btn-danger" data-dismiss="modal" onclick="closeform()" role="button" onclick="formreload()">Close</button>

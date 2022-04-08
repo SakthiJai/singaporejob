@@ -1,5 +1,6 @@
 console.log('test');
 getcategory();
+geteducationList();
 $('#hide').hide();
 $('#certificate').click(function(){
   var text=$('#certificate').val();
@@ -73,6 +74,32 @@ function getcategory() {
         }
     });
 }
+function geteducationList() {
+   $.ajax({
+        url:"geteducationList",
+        type: "GET",
+        data:{_token: $('meta[name="_token"]').attr('content')},
+		dataType: "JSON",
+        cache: false,
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data)
+        {
+			var details =  JSON.parse(JSON.stringify(data));
+         details.forEach(function(element) {
+           $("#education_requried").append('<div class="col-md-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" id="eduction.'+element.edu_id+'" name="education_certificate" value="'+element.edu_id+'">'+element.edu_type+'</label></div></div>');
+        });
+			setTimeout(function(){
+				$(".form-check label,.form-radio label").append('<i class="input-helper"></i>'); 
+		}, 2000);
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
 $(document).ready(function(){
 $('#subcategory_form').validate({
     rules: {
@@ -81,6 +108,10 @@ $('#subcategory_form').validate({
             required: true,
         },
 		sub_category: 
+        {
+            required: true,
+        },
+		education_certificate: 
         {
             required: true,
         },
@@ -93,7 +124,9 @@ messages : {
 	sub_category: {
     required: "Enter The Sub Category"
     },
-	
+	education_certificate: {
+    required: "Select Education Certificate"
+    },
  },
   
     highlight: function(element) {

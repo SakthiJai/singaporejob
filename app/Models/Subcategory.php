@@ -22,6 +22,7 @@ class Subcategory extends Model
         'sub_cat_id ',
         'cat_id',
         'sub_cat_name',
+		'education_certficate',
 		'is_certificate',
 		'certficate',
 		'status',

@@ -62,15 +62,20 @@ Route::get('/getcategorylist', [Jobtype::class, 'getcategorylist']);
 Route::get('/getsectors', [Jobtype::class, 'getsectors']);
 Route::get('/getsubcategory', [Jobtype::class, 'getsubcategory']);
 Route::get('/getexperience', [Jobtype::class, 'getexperience']);
+Route::post('/jobtypeStatus', [Jobtype::class, 'jobtypeStatus']);
 
 Route::post('/addcategory', [Category::class, 'addcategory']);
+Route::post('/categoryStatus', [Category::class, 'categoryStatus']);
 
 Route::post('/addsectors', [Sectors::class, 'addsectors']);
 Route::get('/getsectorslist', [Sectors::class, 'getsectorslist']);
+Route::post('/sectorsStatus', [Sectors::class, 'sectorsStatus']);
 
 Route::post('/addSubcategory', [Subcategory::class, 'addSubcategory']);
+Route::post('/subcategoryStatus', [Subcategory::class, 'subcategoryStatus']);
 Route::get('/getcategoryname', [Subcategory::class, 'getcategoryname']);
 Route::get('/getsubcategorylist', [Subcategory::class, 'getsubcategorylist']);
+Route::get('/geteducationList', [Subcategory::class, 'geteducationList']);
 
 
 Route::post('/addexperience', [Experience::class, 'addexperience']);

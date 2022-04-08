@@ -23,6 +23,7 @@ class SubcategoryController extends Controller
 		$insert=Subcategory::create([
             'cat_id' =>$request->category,
 			'sub_cat_name' =>$request->sub_category,
+			'education_certficate' =>$request->education_certificate,
 			'is_certificate' =>$request->certificate,
 			'certficate' =>$request->certificate_name,
             'status'=>'1']);
@@ -39,6 +40,14 @@ class SubcategoryController extends Controller
 		  $sql="SELECT * 
 			FROM category
 			order by added_at DESC";
+		 $categoryList = DB::select($sql);
+        
+        return response()->json($categoryList);
+    }
+	public function geteducationList(Request $request)
+    {
+		  $sql="SELECT * 
+			FROM education_type";
 		 $categoryList = DB::select($sql);
         
         return response()->json($categoryList);
