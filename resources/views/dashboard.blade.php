@@ -360,7 +360,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
                 <div class="col-md-12 stretch-card">
                   <div class="card profile-card bg-gradient-primary">
                     <div class="card-body">

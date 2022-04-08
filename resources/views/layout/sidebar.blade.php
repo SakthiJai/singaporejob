@@ -38,7 +38,7 @@
 		  <li class="nav-item">
             <a class="nav-link"  href="{{url('/jobtype')}}">
                <img src="assets/images/handshake.png" alt="image" class="profile-pic">
-              <span class="menu-title" style="margin-left:9px;">Job Type</span>
+              <span class="menu-title" style="margin-left:9px;">Job List</span>
               
             </a>
           </li>

@@ -21,7 +21,7 @@ class JobtypeController extends Controller
         
          $insert=JobType::create([
             'job_tittle' =>$request->job_title,
-			'job_sectors' =>$request->job_Sectors,
+			'job_sectors' =>$request->job_sectors,
 			'sub_category' =>$request->sub_Category,
 			'job_category' =>$request->job_Category,
 			'job_experience' =>$request->job_experience,
@@ -40,26 +40,36 @@ class JobtypeController extends Controller
 	public function getcategorylist(Request $request)
     {
         $sql="SELECT *
-			from category
-			ORDER BY added_at desc";
+			from category";
 	  $productList = DB::select($sql);
         return response()->json($productList);
 		
     }
      public function getsectors(Request $request)
     {
-		 $sql="SELECT * FROM `sectors`	 
-			order by added_at desc";		
+		 $sql="SELECT * FROM `sectors`";		
+		 $warehouseList = DB::select($sql);
+        return response()->json($warehouseList);
+    }
+	public function getsubcategory(Request $request)
+    {
+		 $sql="SELECT * FROM `sub_category`";		
+		 $warehouseList = DB::select($sql);
+        return response()->json($warehouseList);
+    }
+	public function getexperience(Request $request)
+    {
+		 $sql="SELECT * FROM `experiencerange`";		
 		 $warehouseList = DB::select($sql);
         return response()->json($warehouseList);
     }
 	public function getjoblist(Request $request)
     {
-		 $sql="SELECT A.job_id,A.job_title,A.ref_image,A.sector_id,A.category_id,A.sub_category_id,A.experience,A.amount,A.description,A.status,B.cat_name,C.sectors_name,D.sub_cat_name
+		 $sql="SELECT A.job_id,A.job_tittle,A.ref_image,A.job_sectors,A.job_category,A.sub_category,A.job_experience,A.serivce_charge,A.description,A.status,B.cat_name,C.sectors_name,D.sub_cat_name
 		 FROM job_list A
-		 left join category B on B.cat_id  = A.	category_id
-		 LEFT JOIN sectors C on C.sectors_id =A.sector_id
-		 LEFT JOIN sub_category D on D.sub_cat_id = A.sub_category_id
+		 left join category B on B.cat_id  = A.	job_category
+		 LEFT JOIN sectors C on C.sectors_id =A.job_sectors
+		 LEFT JOIN sub_category D on D.sub_cat_id = A.sub_category
 		order by A.added_at desc";		
 		 $warehouseList = DB::select($sql);
         return response()->json($warehouseList);

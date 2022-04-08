@@ -2,6 +2,8 @@ console.log('test');
 getcategory();
 getsectors();
 getjoblist();
+getsubcategory();
+getexperience();
 function getjoblist() {
    $.ajax({
         url:"getjoblist",
@@ -30,7 +32,7 @@ function getjoblist() {
                       var color='btn  btn-sm btn-danger';
                     }
 			 i=i+1;
-           $("#joblist_table").append('<tbody><tr><td>'+i+'</td><td>'+element.job_title+'</td><td>'+element.cat_name+'</td><td>'+element.sectors_name+'</td><td>'+element.amount+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="jobtypeStatus('+element.job_id+','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
+           $("#joblist_table").append('<tbody><tr><td>'+i+'</td><td>'+element.job_tittle+'</td><td>'+element.cat_name+'</td><td>'+element.sectors_name+'</td><td>'+element.serivce_charge+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="jobtypeStatus('+element.job_id+','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
         });
            
         },
@@ -88,6 +90,54 @@ function getsectors() {
         }
     });
 }
+function getsubcategory() {
+   $.ajax({
+        url:"getsubcategory",
+        type: "GET",
+        data:{_token: $('meta[name="_token"]').attr('content')},
+		dataType: "JSON",
+        cache: false,
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data)
+        {
+			var details =  JSON.parse(JSON.stringify(data));
+         details.forEach(function(element) {
+           $("#sub_Category").append('<option value="'+element.sub_cat_id +'">'+element.sub_cat_name+'</option>');
+        });
+           
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+function getexperience() {
+   $.ajax({
+        url:"getexperience",
+        type: "GET",
+        data:{_token: $('meta[name="_token"]').attr('content')},
+		dataType: "JSON",
+        cache: false,
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data)
+        {
+			var details =  JSON.parse(JSON.stringify(data));
+         details.forEach(function(element) {
+           $("#job_experience").append('<option value="'+element.exp_id  +'">'+element.exp_range+'</option>');
+        });
+           
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
 $(document).ready(function(){
 	$.validator.setDefaults({ ignore: ":hidden:not(select)" })
 	$.validator.addMethod("requiredSelect", function(element) {
@@ -101,7 +151,7 @@ $('#jobtype_form').validate({
         },
         job_sectors: 
         {
-            requiredSelect : true,
+            required: true,
         },
 		sub_Category: 
         {
@@ -111,7 +161,10 @@ $('#jobtype_form').validate({
         {
             required: true,
         },
-		
+		job_experience: 
+        {
+            required: true,
+        },
 		service_charge: 
         {
             required: true,
@@ -135,7 +188,9 @@ messages : {
 	job_Category: {
     required: "Select The Jobcategory"
     },
-	
+	job_experience: {
+    required: "Select The JobExperience"
+    },
 	service_charge: {
     required: "Enter The Serivce Charge"
     },
@@ -171,7 +226,7 @@ messages : {
            success: function(data)
            {
                 console.log(data.result); 
-               location.reload(); // show response from the php script.
+               //location.reload(); // show response from the php script.
            }
          });
   

@@ -291,21 +291,7 @@
 					  </div>
                     </div>
 					<div class="row">
-					
-				  <div class="col-md-6">
-					<div class="form-group">
-                      <label for="exampleSelectGender">Sub Category</label>
-                        <select class="form-control" id="sub_Category" name="sub_Category">
-						 <option value="">Select</option>
-                          <option value="1">General Worker</option>
-						   <option value="2">Excavtive Operator</option>
-						    <option value="3">Lifting Supervisor</option>
-							 <option value="4">Timing From Worker</option>
-							  <option value="5">Welding Mig/TIG</option>
-                        </select>
-                      </div>
-					  </div>
-					   <div class="col-md-6">
+					<div class="col-md-6">
 						<div class="form-group">
                       <label for="exampleSelectGender">Job Category</label>
                         <select class="form-control" id="job_Category" name="job_Category">
@@ -313,30 +299,23 @@
                         </select>
                       </div>
 					  </div>
+				  <div class="col-md-6">
+					<div class="form-group">
+                      <label for="exampleSelectGender">Sub Category</label>
+                        <select class="form-control" id="sub_Category" name="sub_Category">
+						 <option value="">Select</option>
+                        </select>
+                      </div>
+					  </div>
 					</div>
 					<div class="row">
 					<div class="col-sm-4">
-						 <div class="form-group">
-						 <p>Experience Range</p>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios1" value="1">
-                              0-3
-                            </label>
-							</div>
-							<div class="form-check">
-							<label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios2" value="2">
-                              3-6
-                            </label>
-							</div>
-							<div class="form-check">
-							<label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="job_experience" id="optionsRadios3" value="3">
-                              6-7
-                            </label>
-                          </div>
-					</div>
+						<div class="form-group">
+                      <label for="exampleSelectGender">Job Experience</label>
+                        <select class="form-control" id="job_experience" name="job_experience">
+						 <option value="">Select</option>
+                        </select>
+                      </div>
 					 
 					</div>
 					<div class="col-md-4 roles">
@@ -352,7 +331,7 @@
 					
 						<div class="col-md-12 roles">
                             <label for="description">Description</label>
-							 <textarea id="description" name="description" class="form-control" ></textarea>
+							 <textarea id="description" name="description_id" class="form-control" rows="4" cols="50"></textarea>
                         </div>
 					</div>
 					 <div class="form-group"  align="center" style="margin-top:14px;">
@@ -403,7 +382,7 @@
 </html>
 <script type="text/javascript">
 $( document ).ready(function() {
-   CKEDITOR.replace('description');
+   CKEDITOR.replace('description_id');
 });
 </script>
 <style type="text/css">
