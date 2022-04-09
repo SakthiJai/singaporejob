@@ -267,9 +267,9 @@
 </div>
           <!-------Add modal---->
 		  <div class="modal fade bd-example-modal-lg" id="modal_form" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" style="width:77%; margin-left:13%;">
-	<div class="modal-header" style="background-color: #21beb3;">
+  <div class="modal-dialog modal-lg" style="margin-top:8%;">
+    <div class="modal-content">
+	<div class="modal-header">
 	<h5 class="">Add Job</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
@@ -335,7 +335,8 @@
                         </div>
 					</div>
 					 <div class="form-group"  align="center" style="margin-top:14px;">
-                      <button type="submit" id="submit" class="btn btn-primary btn-md">Save</button>
+                      <button type="submit" id="submit" class="btn btn-primary btn-md" style="background-color: #21bf06;
+    border-color: #21bf06;">Save</button>
                       <button type="button" class="btn  btn-md btn-danger" data-dismiss="modal" onclick="closeform()" role="button" onclick="formreload()">Close</button>
                     </div>
 					</form>

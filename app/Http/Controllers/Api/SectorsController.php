@@ -61,14 +61,9 @@ class SectorsController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-    public function deletecategory(Request $request){
-         
-         $id=$request->id;
-		$data=array(
-            'active' =>3
-         );
-
-        $delete= Category::where('id',$id)->update($data);
+    public function deletesectors(Request $request){
+		$id=$request->sectors_id;
+        $delete= Sectors::where('sectors_id',$id)->delete();
         if($delete){
             
                return response()->json('Success');

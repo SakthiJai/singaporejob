@@ -62,14 +62,10 @@ class CategoryController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-    public function deletecategory(Request $request){
+   public function deletecatgeroy(Request $request){
          
-         $id=$request->id;
-		$data=array(
-            'active' =>3
-         );
-
-        $delete= Category::where('id',$id)->update($data);
+        $id=$request->cat_id;
+        $delete= Category::where('cat_id',$id)->delete($data);
         if($delete){
             
                return response()->json('Success');

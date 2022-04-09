@@ -66,10 +66,12 @@ Route::post('/jobtypeStatus', [Jobtype::class, 'jobtypeStatus']);
 
 Route::post('/addcategory', [Category::class, 'addcategory']);
 Route::post('/categoryStatus', [Category::class, 'categoryStatus']);
+Route::post('/deletecatgeroy', [Category::class, 'deletecatgeroy']);
 
 Route::post('/addsectors', [Sectors::class, 'addsectors']);
 Route::get('/getsectorslist', [Sectors::class, 'getsectorslist']);
 Route::post('/sectorsStatus', [Sectors::class, 'sectorsStatus']);
+Route::post('/deletesectors', [Sectors::class, 'deletesectors']);
 
 Route::post('/addSubcategory', [Subcategory::class, 'addSubcategory']);
 Route::post('/subcategoryStatus', [Subcategory::class, 'subcategoryStatus']);

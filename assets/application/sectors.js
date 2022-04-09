@@ -28,7 +28,7 @@ function getsectorslist() {
                       var color='btn  btn-sm btn-danger';
                     }
 			 i=i+1;
-           $("#sectors_table").append('<tbody><tr><td>'+i+'</td><td>'+element.sectors_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="sectorsStatus('+element.sectors_id+','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
+           $("#sectors_table").append('<tbody><tr><td>'+i+'</td><td>'+element.sectors_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem; padding:9px;margin-left:-9px;" ><li><button onclick="sectorsStatus('+element.sectors_id+','+element.status+')" class="btn-success" style="color:white;background-color:red;border-color:red;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text" onclick="deletesectorsList('+element.sectors_id+')">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
         });
            
         },
@@ -160,20 +160,20 @@ function viewpetList(id) {
   
 }
    
-function deletecategoryList(id)
+function deletesectorsList(sectors_id)
 {
-    $('.modal-title').text('Delete'); 
-	$(".fades").modal("show");
-    $("#delete_id").val(id);
+	console.log(sectors_id);
+	$("#delete_id").val(sectors_id);
+	$("#myModal").modal("show");
 }
    
-  function deletecategory(id){
+  function deletesectors(){
       
 	var id=$("#delete_id").val();
       $.ajax({
-        url:"deletecategory",
+        url:"deletesectors",
         type: "post",
-        data:{id:id,_token: $('meta[name="_token"]').attr('content')},
+        data:{sectors_id:id,_token: $('meta[name="_token"]').attr('content')},
         dataType: "JSON",
         //cache: false,
 			//dataType: 'json',
