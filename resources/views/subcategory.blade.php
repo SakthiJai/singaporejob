@@ -365,6 +365,24 @@
 </html>
 <style type="text/css">
 .error{
-	color:red;
+	color:#cc0033;
 }
+select.error {
+  
+  border: 1px solid #cc0033 !important;
+  outline: none;
+}
+input.error {
+  
+  border: 1px solid #cc0033 !important;
+  outline: none;
+}
+select.form-control, input.form-control,.select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead, select.tt-query, select.tt-hint {
+    padding: 0.4375rem 0.75rem;
+    border: 0;
+    outline: 1px solid #c9c8c8 !important;
+    color: #49505 !important;
+}
+
+
 </style>

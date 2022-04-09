@@ -23,9 +23,9 @@ class SubcategoryController extends Controller
 		$insert=Subcategory::create([
             'cat_id' =>$request->category,
 			'sub_cat_name' =>$request->sub_category,
-			'education_certficate' =>$request->education_certificate,
+			'edu_ids' =>implode(',',$request->education_certificate),
 			'is_certificate' =>$request->certificate,
-			'education_requried' =>$request->education_label,
+			'is_edu_required' =>$request->education_label,
 			'certficate' =>$request->certificate_name,
             'status'=>'1']);
         if($insert){
