@@ -25,6 +25,7 @@ class SubcategoryController extends Controller
 			'sub_cat_name' =>$request->sub_category,
 			'education_certficate' =>$request->education_certificate,
 			'is_certificate' =>$request->certificate,
+			'education_requried' =>$request->education_label,
 			'certficate' =>$request->certificate_name,
             'status'=>'1']);
         if($insert){

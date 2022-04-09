@@ -289,12 +289,17 @@
                             <input type="text" name="sub_category" class="form-control" id="sub_category" placeholder="" autocomplete="off" maxlength="50">
 						</div>
                     </div>
-					<label for="roles">Education Requried</label>
+					<div class="form-check">
+					<label class="form-check-label">
+					<input type="checkbox" class="form-check-input" id="education_label" name="education_label" value="1">
+                             Education Requried
+					</label>
+					</div>
 					<div class="row" id="education_requried">
 					</div>
 					<div class="row" >
 					<div class="col-md-6" style="margin-top: 26px;">
-						  <label >Cretificate</label>
+						  <label >Certificate</label>
 						  <div class="form-check">
                             <label class="form-check-label">
                               <input type="checkbox" class="form-check-input" id="certificate" name="certificate" value="1">

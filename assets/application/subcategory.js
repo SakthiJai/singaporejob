@@ -1,7 +1,7 @@
 console.log('test');
 getcategory();
-geteducationList();
 $('#hide').hide();
+var text=0;
 $('#certificate').click(function(){
   var text=$('#certificate').val();
    console.log(text);
@@ -13,6 +13,13 @@ else {
 	 $('#hide').hide();
 }
 });
+$('#education_label').click(function(){
+			text=$('#education_label').val();	
+			console.log(text);
+			if(text=='1'){
+				geteducationList();
+			}
+			});
 getsubcategorylist();
 function getsubcategorylist() {
    $.ajax({
@@ -86,8 +93,10 @@ function geteducationList() {
         },
         success: function(data)
         {
+			
 			var details =  JSON.parse(JSON.stringify(data));
          details.forEach(function(element) {
+			 
            $("#education_requried").append('<div class="col-md-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" id="eduction.'+element.edu_id+'" name="education_certificate" value="'+element.edu_id+'">'+element.edu_type+'</label></div></div>');
         });
 			setTimeout(function(){
@@ -125,7 +134,7 @@ messages : {
     required: "Enter The Sub Category"
     },
 	education_certificate: {
-    required: "Select Education Certificate"
+    required: "Select The Education Certificate"
     },
  },
   
