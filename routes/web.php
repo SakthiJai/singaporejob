@@ -83,6 +83,7 @@ Route::get('/getexperiencelist', [Experience::class, 'getexperiencelist']);
 Route::post('/experienceStatus', [Experience::class, 'experienceStatus']);
 
 Route::get('adminlogout',[Admin::class, 'logout']);
+Route::post('/adminlogin',[Admin::class, 'adminLogin']);
 
 
 
