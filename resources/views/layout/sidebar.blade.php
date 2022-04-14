@@ -9,36 +9,43 @@
           </li>
 		  <li class="nav-item">
             <a class="nav-link"  href="{{url('/sectors')}}">
-              <img src="assets/images/settings2.png" alt="image" class="profile-pic"	>
+              <img src="<?php echo URL::to('');?>/assets/images/settings2.png" alt="image" class="profile-pic"	>
               <span class="menu-title" style="margin-left:9px">Sectors</span>
               
             </a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link"  href="{{url('/category')}}">
-              <img src="assets/images/category.png" alt="image" class="profile-pic">
+              <img src="<?php echo URL::to('');?>/assets/images/category.png" alt="image" class="profile-pic">
               <span class="menu-title" style="margin-left:9px;">Category</span>
               
             </a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link"  href="{{url('/subcategory')}}">
-              <img src="assets/images/menu.png" alt="image" class="profile-pic" style="width:21px;">
+              <img src="<?php echo URL::to('');?>/assets/images/menu.png" alt="image" class="profile-pic" style="width:21px;">
               <span class="menu-title" style="margin-left:9px;">Sub Category</span>
               
             </a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link"  href="{{url('/experiencerange')}}">
-              <img src="assets/images/experience.png" alt="image" class="profile-pic">
+              <img src="<?php echo URL::to('');?>/assets/images/experience.png" alt="image" class="profile-pic">
               <span class="menu-title" style="margin-left:9px;">Experience Range</span>
              
             </a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link"  href="{{url('/jobtype')}}">
-               <img src="assets/images/handshake.png" alt="image" class="profile-pic">
+               <img src="<?php echo URL::to('');?>/assets/images/handshake.png" alt="image" class="profile-pic">
               <span class="menu-title" style="margin-left:9px;">Job List</span>
+              
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link"  href="{{url('/jobapplication')}}">
+               <img src="<?php echo URL::to('');?>/assets/images/handshake.png" alt="image" class="profile-pic">
+              <span class="menu-title" style="margin-left:9px;">Job Application</span>
               
             </a>
           </li>

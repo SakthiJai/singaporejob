@@ -243,7 +243,7 @@
 <!------delete modal--->
 <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-confirm">
-        <div class="modal-content" style="width: 478px;>
+        <div class="modal-content" style="width: 478px;">
 		<form  id="deleteForm">
 		<input type="hidden" id="delete_id" name="delete_id">
             <div class="modal-header flex-column">

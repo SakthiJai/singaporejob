@@ -47,11 +47,7 @@ function getsubcategorylist() {
                       var label='active';
                       var color='btn  btn-sm btn-danger';
                     }
-<<<<<<< HEAD
-           $("#subcategory_table").append('<tbody><tr><td>'+i+'</td><td>'+element.cat_name+'</td><td>'+element.sub_cat_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;padding:9px; margin-left:-9px;" ><li><button onclick="subcategoryStatus('+element.sub_cat_id+','+element.status+')" class="btn-success" style="color:white;background-color:red;border-color:red;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
-=======
-           $("#subcategory_table").append('<tr><td>'+i+'</td><td>'+element.cat_name+'</td><td>'+element.sub_cat_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="subcategoryStatus('+element.sub_cat_id+','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr>');
->>>>>>> 2e2ab5c4d46e6ab89932489ad59c524f8ea950d6
+           $("#subcategory_table").append('<tbody><tr><td>'+i+'</td><td>'+element.cat_name+'</td><td>'+element.sub_cat_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;padding:9px; margin-left:-9px;" ><li><button onclick="subcategoryStatus('+element.sub_cat_id+','+element.status+')" class="btn-success" style="color:white;background-color:red;border-color:red;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text" onclick="deletecategoryList('+element.sub_cat_id+')">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
         });
            
         },
@@ -101,7 +97,7 @@ function geteducationList() {
 			var details =  JSON.parse(JSON.stringify(data));
          details.forEach(function(element) {
 			 
-           $("#education_requried").append('<div class="col-md-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" id="eduction.'+element.edu_id+'" name="education_certificate[]" value="'+element.edu_id+'">'+element.edu_type+'</label></div></div>');
+           $("#education_requried").append('<div class="col-md-2"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" id="eduction.'+element.edu_id+'" name="education_certificate" value="'+element.edu_id+'">'+element.edu_type+'</label></div></div>');
         });
 			setTimeout(function(){
 				$(".form-check label,.form-radio label").append('<i class="input-helper"></i>'); 
@@ -128,16 +124,6 @@ $('#subcategory_form').validate({
         {
             required: true,
         },
-		certificate_name:
-		{
-			required: function(element) {
-			return $('#certificate').is(':checked')
-		}
-			
-			
-			
-		}
-		
 		
     },
 messages : {
@@ -150,10 +136,6 @@ messages : {
 	education_certificate: {
     required: "Select The Education Certificate"
     },
-	certificate_name:
-		{
-			required:"Please enter the required certificate name"
-		}
  },
   
     highlight: function(element) {
@@ -256,18 +238,18 @@ function viewpetList(id) {
   
 }
    
-function deletecategoryList(id)
+function deletecategoryList(sub_cat_id)
 {
-    $('.modal-title').text('Delete'); 
-	$(".fades").modal("show");
-    $("#delete_id").val(id);
+	console.log(sub_cat_id);
+	$("#delete_id").val(sub_cat_id);
+	$("#myModal").modal("show");
 }
    
-  function deletecategory(id){
+  function deletesubcategory(sub_cat_id){
       
 	var id=$("#delete_id").val();
       $.ajax({
-        url:"deletecategory",
+        url:"deletesubcategory",
         type: "post",
         data:{id:id,_token: $('meta[name="_token"]').attr('content')},
         dataType: "JSON",

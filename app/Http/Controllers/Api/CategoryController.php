@@ -64,8 +64,8 @@ class CategoryController extends Controller
     }
    public function deletecatgeroy(Request $request){
          
-        $id=$request->cat_id;
-        $delete= Category::where('cat_id',$id)->delete($data);
+        $id=$request->id;
+        $delete= Category::where('cat_id',$id)->delete();
         if($delete){
             
                return response()->json('Success');

@@ -32,11 +32,7 @@ function getjoblist() {
                       var color='btn  btn-sm btn-danger';
                     }
 			 i=i+1;
-<<<<<<< HEAD
-           $("#joblist_table").append('<tbody><tr><td>'+i+'</td><td>'+element.job_tittle+'</td><td>'+element.cat_name+'</td><td>'+element.sectors_name+'</td><td>'+element.serivce_charge+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem; padding:9px;margin-left:-9px;" ><li><button onclick="jobtypeStatus('+element.job_id+','+element.status+')" class="btn-success" style="color:white;background-color:red;border-color:red;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
-=======
-           $("#joblist_table").append('<tr><td>'+i+'</td><td>'+element.job_tittle+'</td><td>'+element.cat_name+'</td><td>'+element.sectors_name+'</td><td>'+element.serivce_charge+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem;" ><li><button onclick="jobtypeStatus('+element.job_id+','+element.status+')" class="btn-success" style="color:white;background-color: #23BDCF;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr>');
->>>>>>> 2e2ab5c4d46e6ab89932489ad59c524f8ea950d6
+           $("#joblist_table").append('<tbody><tr><td>'+i+'</td><td>'+element.job_tittle+'</td><td>'+element.cat_name+'</td><td>'+element.sectors_name+'</td><td>'+element.serivce_charge+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem; padding:9px;margin-left:-9px;" ><li><button onclick="jobtypeStatus('+element.job_id+','+element.status+')" class="btn-success" style="color:white;background-color:red;border-color:red;"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text" onclick="deletejobList('+element.job_id +')">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button></div></td></tr></tbody>');
         });
            
         },
@@ -310,18 +306,18 @@ function viewpetList(id) {
   
 }
    
-function deletecategoryList(id)
+function deletejobList(job_id)
 {
-    $('.modal-title').text('Delete'); 
-	$(".fades").modal("show");
-    $("#delete_id").val(id);
+   console.log(job_id );
+	$("#delete_id").val(job_id );
+	$("#myModal").modal("show");
 }
    
-  function deletecategory(id){
+  function deletejobtype(){
       
 	var id=$("#delete_id").val();
       $.ajax({
-        url:"deletecategory",
+        url:"deletejobtype",
         type: "post",
         data:{id:id,_token: $('meta[name="_token"]').attr('content')},
         dataType: "JSON",

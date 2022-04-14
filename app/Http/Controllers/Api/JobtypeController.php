@@ -65,11 +65,11 @@ class JobtypeController extends Controller
     }
 	public function getjoblist(Request $request)
     {
-		 $sql="SELECT A.job_id,A.job_tittle,A.ref_image,A.job_sectors,A.job_category,A.sub_category,A.job_experience,A.serivce_charge,A.description,A.status,B.cat_name,C.sectors_name,D.sub_cat_name
+		 $sql="SELECT A.job_id,A.job_title,A.ref_image,A.sector_id,A.category_id,A.sub_category_id,A.amount,A.experience,A.description,A.status,B.cat_name,C.sectors_name,D.sub_cat_name
 		 FROM job_list A
-		 left join category B on B.cat_id  = A.	job_category
-		 LEFT JOIN sectors C on C.sectors_id =A.job_sectors
-		 LEFT JOIN sub_category D on D.sub_cat_id = A.sub_category
+		 left join category B on B.cat_id  = A.category_id
+		 LEFT JOIN sectors C on C.sectors_id =A.sector_id
+		 LEFT JOIN sub_category D on D.sub_cat_id = A.sub_category_id
 		order by A.added_at desc";		
 		 $warehouseList = DB::select($sql);
         return response()->json($warehouseList);
@@ -95,13 +95,10 @@ class JobtypeController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-    public function deletewarehouse(Request $request){
+    public function deletejobtype(Request $request){
          
          $id=$request->id;
-		$data=array(
-            'active' =>3
-         );
-        $delete= Warehouse::where('id',$id)->update($data);
+        $delete= JobType::where('job_id',$id)->delete();
         if($delete){
             
                return response()->json('Success');

@@ -4,13 +4,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Admin</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="assets/vendors/typicons/typicons.css">
-  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="<?php echo URL::to('');?>/assets/vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="<?php echo URL::to('');?>/assets/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="<?php echo URL::to('');?>/assets/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
 </head>

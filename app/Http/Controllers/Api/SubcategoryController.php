@@ -23,7 +23,7 @@ class SubcategoryController extends Controller
 		$insert=Subcategory::create([
             'cat_id' =>$request->category,
 			'sub_cat_name' =>$request->sub_category,
-			'edu_ids' =>implode(',',$request->education_certificate),
+			'edu_ids' =>$request->education_certificate,
 			'is_certificate' =>$request->certificate,
 			'is_edu_required' =>$request->education_label,
 			'certficate' =>$request->certificate_name,
@@ -84,14 +84,10 @@ class SubcategoryController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-    public function deletecategory(Request $request){
+    public function deletesubcategory(Request $request){
          
          $id=$request->id;
-		$data=array(
-            'active' =>3
-         );
-
-        $delete= Category::where('id',$id)->update($data);
+        $delete= Subcategory::where('sub_cat_id',$id)->delete();
         if($delete){
             
                return response()->json('Success');

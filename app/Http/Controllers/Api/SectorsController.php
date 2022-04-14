@@ -62,7 +62,7 @@ class SectorsController extends Controller
         }
     }
     public function deletesectors(Request $request){
-		$id=$request->sectors_id;
+		$id=$request->id;
         $delete= Sectors::where('sectors_id',$id)->delete();
         if($delete){
             

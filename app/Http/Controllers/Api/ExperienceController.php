@@ -61,13 +61,10 @@ class ExperienceController extends Controller
               return response()->json(['result'=>'failed']);
         }
     }
-    public function deleteitems(Request $request){
+    public function deleteexperience(Request $request){
          
          $id=$request->id;
-		$data=array(
-            'active' =>3
-         );
-        $delete= Items::where('id',$id)->update($data);
+        $delete= Experience::where('exp_id',$id)->delete();
         if($delete){
             
                return response()->json('Success');

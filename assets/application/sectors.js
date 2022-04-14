@@ -173,7 +173,7 @@ function deletesectorsList(sectors_id)
       $.ajax({
         url:"deletesectors",
         type: "post",
-        data:{sectors_id:id,_token: $('meta[name="_token"]').attr('content')},
+        data:{id:id,_token: $('meta[name="_token"]').attr('content')},
         dataType: "JSON",
         //cache: false,
 			//dataType: 'json',
@@ -186,7 +186,7 @@ function deletesectorsList(sectors_id)
         success: function(data)
         {
           if(data="success"){
-           location.reload();
+           //location.reload();
           }
           else{
 

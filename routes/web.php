@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ExperienceController as Experience;
 use App\Http\Controllers\Api\AuthController as Auth;
 use App\Http\Controllers\Api\UserController as User;
 use App\Http\Controllers\Api\SettingsController as Settings;
+use App\Http\Controllers\Api\JobapplicationController as Jobapplication;
 
 
 /*
@@ -37,6 +38,12 @@ Route::get('experiencerange', function () {
 Route::get('sectors', function () {
     return view('sectors');
 });
+Route::get('jobapplication', function () {
+    return view('jobapplication');
+});
+Route::get('viewjobapplication/{id}', function () {
+    return view('viewjobapplication');
+});
 });
 
 
@@ -63,8 +70,9 @@ Route::get('/getsectors', [Jobtype::class, 'getsectors']);
 Route::get('/getsubcategory', [Jobtype::class, 'getsubcategory']);
 Route::get('/getexperience', [Jobtype::class, 'getexperience']);
 Route::post('/jobtypeStatus', [Jobtype::class, 'jobtypeStatus']);
+Route::post('/deletecatgeroy', [Jobtype::class, 'deletecatgeroy']);
+Route::post('/deletejobtype', [Jobtype::class, 'deletejobtype']);
 
-Route::post('/addcategory', [Category::class, 'addcategory']);
 Route::post('/categoryStatus', [Category::class, 'categoryStatus']);
 Route::post('/deletecatgeroy', [Category::class, 'deletecatgeroy']);
 
@@ -78,11 +86,15 @@ Route::post('/subcategoryStatus', [Subcategory::class, 'subcategoryStatus']);
 Route::get('/getcategoryname', [Subcategory::class, 'getcategoryname']);
 Route::get('/getsubcategorylist', [Subcategory::class, 'getsubcategorylist']);
 Route::get('/geteducationList', [Subcategory::class, 'geteducationList']);
+Route::post('/deletesubcategory', [Subcategory::class, 'deletesubcategory']);
 
 
 Route::post('/addexperience', [Experience::class, 'addexperience']);
 Route::get('/getexperiencelist', [Experience::class, 'getexperiencelist']);
 Route::post('/experienceStatus', [Experience::class, 'experienceStatus']);
+Route::post('/deleteexperience', [Experience::class, 'deleteexperience']);
+
+Route::get('/getjobapplicationlist', [Jobapplication::class, 'getjobapplicationlist']);
 
 Route::get('adminlogout',[Admin::class, 'logout']);
 

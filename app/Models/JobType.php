@@ -11,7 +11,7 @@ class JobType extends Model
 
    
     protected $table = 'job_list';
-    protected $primaryKey = 'id ';
+    protected $primaryKey = 'job_id  ';
     
       const CREATED_AT = 'added_at';
       const UPDATED_AT = 'modified_at';
@@ -19,13 +19,13 @@ class JobType extends Model
 
     protected $fillable = [
        
-        'id',
-        'job_tittle',
+        'job_id ',
+        'job_title',
         'job_sectors',
         'sub_category',
         'job_category',
 		'job_experience',
-		'serivce_charge',
+		'amount',
 		'requried_skills',
 		'description',
 		'status',
