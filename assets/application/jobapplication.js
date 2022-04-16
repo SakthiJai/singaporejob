@@ -16,23 +16,23 @@ function getjobapplicationlist(){
 			var details =  JSON.parse(JSON.stringify(data));
 			
          details.forEach(function(element) {
-			 if(element.status==1){
-
+			 if(element.application_status==1){
                        var button='Active';
                        var label='Inactive';
                        var color='btn btn-primary btn-sm';
                     }
-                    else if(element.status==2){
+                    else if(element.application_status==2){
                       var button='Inactive';
                       var label='active';
                       var color='btn  btn-sm btn-danger';
                     }
 			 i=i+1;
-           $("#jobapplication_table").append('<tbody><tr><td>'+i+'</td><td>'+element.first_name+'</td><td><div class="btn-group"><button type="button" class="'+color+' dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">'+button+'<span class="caret"></span></button><ul class="dropdown-menu"role="menu" style="min-width:4rem; padding:9px; margin-left:-9px" ><li><button onclick="categoryStatus('+element.cat_id +','+element.status+')" class="btn btn-success btn-sm" style="color:white;background-color:red; border-color:red"  title="Hapus" >'+label+'</button></li></ul></div></td><td><div class="d-flex align-items-center"><button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">Edit<i class="typcn typcn-edit btn-icon-append"></i></button><button type="button" class="btn btn-danger btn-sm btn-icon-text" onclick="deleteproductList()">Delete<i class="typcn typcn-delete-outline btn-icon-append"></i></button> <button type="button" onclick="viewbooking('+element.job_app_id+')" class="btn btn-success btn-sm" style="margin-left:15px;">View Detalis</button></div></td></tr></tbody>');
+           $("#jobapplication_table").append('<tbody><tr><td>'+i+'</td><td><input type="checkbox" name="users" id="users" value="1" class="minimal"></td><td><p id="changeMe">'+element.yoe+'</p></td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.qualification+'</td><td><div class="d-flex align-items-center"><button type="button" onclick="viewbooking('+element.job_app_id+')" class="btn btn-primary btn-sm" style="margin-left:15px;">View Detalis</button></div></td></tr></tbody>');
         });
            
         },
         error: function (jqXHR, textStatus, errorThrown)
+		+
         {
             alert('Error get data from ajax');
         }

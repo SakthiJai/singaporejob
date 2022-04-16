@@ -32,9 +32,16 @@ class JobapplicationController extends Controller
     }
      public function getjobapplicationlist(Request $request)
     {
-		  $sql="SELECT * 
-    FROM `job_application`
-     order by added_at DESC";
+		  $sql="SELECT A.job_app_id,concat(A.first_name,' ',A.last_name) as name,A.dob,A.mother_name,A.email_id,A.mobile_number,A.maritial_status,B.appl_certificate_id,B.passport_no,
+		  B.skilled_labour,A.application_status,A.yoe,(case when (B.qualification = 1) then 'Diploma'
+                when (B.qualification = 2) then 'Bachelor Degree'
+                when (B.qualification = 3) then 'Master Degree'
+             end)as qualification,
+		  B.resume,B.pervious_certficate,B.singapore_experience_details,B.certifcate_10th,B.certficate_12th,B.bachelors_degree,B.diploma_certificate,B.bacholer_degree_certificate,
+		  B.mater_degree_certificate,B.mark_sheet,B.mark_sheet,B.skilled_certificate
+    FROM job_application A
+	left join jop_application_certificate B ON B.job_app_id = A.job_app_id
+     order by A.added_at DESC";
 		 $categoryList = DB::select($sql);
         
         return response()->json($categoryList);

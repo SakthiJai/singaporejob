@@ -205,8 +205,8 @@
       </header> -->
        <header class="panel-heading" >&nbsp;&nbsp;&nbsp;
 	   
-		<button type="button" class="btn btn-success" data-toggle="modal" style="margin-bottom: 0px;float:right; background-color: #32BDEA;
-    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg">Add Job</button><button class="btn btn-default" onclick="reload_table()"><i class="fa fa-refresh"></i></button>
+		<!--<button type="button" class="btn btn-success" data-toggle="modal" style="margin-bottom: 0px;float:right; background-color: #32BDEA;
+    border-color: #32BDEA; margin-top:-54px;" data-target=".bd-example-modal-lg">Add Job</button><button class="btn btn-default" onclick="reload_table()"></button>-->
 
          <span class="tools pull-right">
           <a href="javascript:;" class="fa fa-chevron-down" style="visibility: hidden !important;"></a>
@@ -217,19 +217,27 @@
         <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div class="table-responsive pt-3">
-                  <table class="table table-striped project-orders-table" id="jobapplication_table">
-                    <thead>
-                      <tr>
-                        <th class="ml-5">ID</th>
-                        <th>Total Experience</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
+                <div class="table-responsive">
+                 
+                    <table class="table align-middle mb-0 bg-white" id="jobapplication_table">
+						  <thead class="bg-white">
+							<tr>
+							  <th>S.No</th>
+							  <th>CHECK BOX</th>
+							  <th>YOE</th>
+							  <th>CANDIDATE STATUS</th>
+							  <th>FIRST NAME</th>
+							  <th>WP NO</th>
+							  <th>P SKILL</th>
+							  <th>S SKILL</th>
+							  <th>WK TRAD</th>
+							  <th>ACTIONS</th>
+							</tr>
+						  </thead>
+							  <tbody>
+								
+							  </tbody>
+						</table>
                 </div>
               </div>
             </div>
@@ -325,6 +333,9 @@
   <script>
     var baseUrl= '<?php echo URL::to('/'); ?>';
     console.log(baseUrl);
+	$('td:contains("-.")').html(function (i, htm) {
+    return htm.replace(/-./g, "<br>-.");
+});
 </script>
 </body>
 
