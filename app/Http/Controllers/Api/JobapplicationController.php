@@ -23,7 +23,6 @@ class JobapplicationController extends Controller
             'cat_name' =>$request->category,
             'status'=>'1']);
         if($insert){
-            
                return response()->json(['result' =>'Success']);
         }else{
                
@@ -38,14 +37,28 @@ class JobapplicationController extends Controller
                 when (B.qualification = 3) then 'Master Degree'
              end)as qualification,
 		  B.resume,B.pervious_certficate,B.singapore_experience_details,B.certifcate_10th,B.certficate_12th,B.bachelors_degree,B.diploma_certificate,B.bacholer_degree_certificate,
-		  B.mater_degree_certificate,B.mark_sheet,B.mark_sheet,B.skilled_certificate
+		  B.mater_degree_certificate,B.mark_sheet,B.mark_sheet,B.skilled_certificate,B.primary_skill,B.secoundry_skill,B.workpermit_number,B.candidate_status
     FROM job_application A
 	left join jop_application_certificate B ON B.job_app_id = A.job_app_id
      order by A.added_at DESC";
 		 $categoryList = DB::select($sql);
-        
         return response()->json($categoryList);
     }
+	 public function getviewJobList(Request $request)
+    {
+		 $sql="SELECT A.job_app_id,concat(A.first_name,' ',A.last_name) as name,A.dob,A.mother_name,A.email_id,A.mobile_number,A.maritial_status,B.appl_certificate_id,B.passport_no,A.images,
+		  B.skilled_labour,A.application_status,A.yoe,(case when (B.qualification = 1) then 'Diploma'
+                when (B.qualification = 2) then 'Bachelor Degree'
+                when (B.qualification = 3) then 'Master Degree'
+             end)as qualification,B.instagram,B.facebook,B.twitter,
+		  B.resume,B.pervious_certficate,B.singapore_experience_details,B.certifcate_10th,B.certficate_12th,B.bachelors_degree,B.diploma_certificate,B.bacholer_degree_certificate,
+		  B.mater_degree_certificate,B.mark_sheet,B.mark_sheet,B.skilled_certificate,B.primary_skill,B.secoundry_skill,B.workpermit_number,B.candidate_status
+    FROM job_application A
+	left join jop_application_certificate B ON B.job_app_id = A.job_app_id
+	where A.job_app_id  ='".$request->id."'";
+		 $categoryList = DB::select($sql);
+		  return response()->json($categoryList);
+	}
     public function editcategoryList(Request $request)
     {
         $petList = Category::where('id',$request->id)->first();

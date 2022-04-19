@@ -27,12 +27,11 @@ function getjobapplicationlist(){
                       var color='btn  btn-sm btn-danger';
                     }
 			 i=i+1;
-           $("#jobapplication_table").append('<tbody><tr><td>'+i+'</td><td><input type="checkbox" name="users" id="users" value="1" class="minimal"></td><td><p id="changeMe">'+element.yoe+'</p></td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.name+'</td><td>'+element.qualification+'</td><td><div class="d-flex align-items-center"><button type="button" onclick="viewbooking('+element.job_app_id+')" class="btn btn-primary btn-sm" style="margin-left:15px;">View Detalis</button></div></td></tr></tbody>');
+           $("#jobapplication_table").append('<tbody><tr><td>'+i+'</td><td><input type="checkbox" name="users" id="users" value="1" class="minimal"></td><td><p id="changeMe">'+element.yoe+'</p></td><td>'+element.name+'</td><td>'+element.workpermit_number+'</td><td>'+element.primary_skill+'</td><td>'+element.secoundry_skill+'</td><td>'+element.candidate_status+'</td><td><div class="d-flex align-items-center"><button type="button" onclick="viewbooking('+element.job_app_id+')" class="btn btn-primary btn-sm" style="margin-left:15px;">View Detalis</button></div></td></tr></tbody>');
         });
            
         },
         error: function (jqXHR, textStatus, errorThrown)
-		+
         {
             alert('Error get data from ajax');
         }
@@ -41,7 +40,7 @@ function getjobapplicationlist(){
 function viewbooking(id)
 {
 	console.log(id);
-     window.location.href=baseUrl+"/viewjobapplication/"+id;
+	window.location.href="viewjobapplication/"+id;
 }
 $(document).ready(function(){
 $('#category_form').validate({

@@ -95,6 +95,7 @@ Route::post('/experienceStatus', [Experience::class, 'experienceStatus']);
 Route::post('/deleteexperience', [Experience::class, 'deleteexperience']);
 
 Route::get('/getjobapplicationlist', [Jobapplication::class, 'getjobapplicationlist']);
+Route::get('getviewJobList', [Jobapplication::class, 'getviewJobList']);
 
 Route::get('adminlogout',[Admin::class, 'logout']);
 

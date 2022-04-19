@@ -223,14 +223,13 @@
 						  <thead class="bg-white">
 							<tr>
 							  <th>S.No</th>
-							  <th>CHECK BOX</th>
+							  <th>#</th>
 							  <th>YOE</th>
-							  <th>CANDIDATE STATUS</th>
 							  <th>FIRST NAME</th>
 							  <th>WP NO</th>
 							  <th>P SKILL</th>
 							  <th>S SKILL</th>
-							  <th>WK TRAD</th>
+							  <th>CANDIDATE STATUS</th>
 							  <th>ACTIONS</th>
 							</tr>
 						  </thead>

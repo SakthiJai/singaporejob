@@ -21,6 +21,7 @@
   <script src="js/template.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/todolist.js"></script>
+  <script src="//code.tidio.co/aiboioudpvgudtubey2qrlqhfkdcpvnv.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>		

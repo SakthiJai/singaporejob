@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
 <body>
+<?php 
+$job	= explode("/",$_SERVER['REQUEST_URI']);
+?>
  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -123,7 +126,7 @@
             </div>
             <ul class="chat-list">
               <li class="list active">
-                <div class="profile"><img src="<?php echo URL::to('');?>/assets/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="<?php echo URL::to('');?>/assets/images/faces/face1.jpg" alt=""><span class="online"></span></div>
                 <div class="info">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -187,11 +190,10 @@
         <div class="col-md-12">
             <div class="card p-3 py-4">
 			<div class="text-center" id="edit">
-			<button type="button" class="btn btn-success" data-toggle="modal" style="float:right; background-color:blue;
-    border-color:blue;" data-target=".bd-example-modal-lg"><span>Back<span></button>
+			<button type="button" class="btn btn-success" data-toggle="modal" style="float:right; background-color:blue;border-color:blue;" onclick="backform()" data-target=".bd-example-modal-lg">Back</button>
 	</div>
-                <div class="text-center"> <img src="<?php echo URL::to('');?>/assets/images/man.jpg" width="100"> </div>
-				<h5 class="text-center">Alexender Schidmt</h5> 
+                <div class="text-center"> <img src="<?php echo URL::to('');?>/assets/images/man.jpg" width="200" id="images"> </div>
+				<h5 class="text-center" id="first_name"><span></span></h5> 
 				<div class="row">
                 <div class="col-md-3">
                     <div class="card cssanimation2 fadeInBottom2"> 
@@ -199,9 +201,9 @@
                                 <div class="row" id="blockitems">
                                     <div class="col-sm-3 col-md-1 col-lg-1 col-xl-1" id="icons_section"> <img src="<?php echo URL::to('');?>/assets/images/pngtree.png" style="width:60px;margin-left:-9px;margin-bottom:-65px; margin-left:-19px;"></div>
 									
-                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="heading_section">
+                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="facebook_link">
                                         <h6 style="margin-left:45px;">Facebook</h6>
-                                        <p style="margin-left:45px; color:blue">Profile Verification</p>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -214,9 +216,9 @@
                                 <div class="row" id="blockitems">
                                     <div class="col-sm-3 col-md-1 col-lg-1 col-xl-1" id="icons_section"> <img src="<?php echo URL::to('');?>/assets/images/demo.png" style="width:60px;margin-left:-19px;margin-bottom:-65px;"></div>
 									
-                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="heading_section">
+                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="instagram_link">
                                         <h6 style="margin-left:45px;">Instagram</h6>
-                                        <p style="margin-left:45px;color:blue;">invite Friends</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -228,9 +230,9 @@
                                 <div class="row" id="blockitems">
                                     <div class="col-sm-3 col-md-1 col-lg-1 col-xl-1" id="icons_section"> <img src="<?php echo URL::to('');?>/assets/images/twitter.png" style="width:60px;margin-left:-19px; margin-bottom:-65px;"></div>
 									
-                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="heading_section">
+                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="twitter_link">
                                         <h6 style="margin-left:45px;">Twitter</h6>
-                                        <p style="margin-left:45px;color:blue;">invite Friends</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -242,9 +244,9 @@
                                 <div class="row" id="blockitems">
                                     <div class="col-sm-3 col-md-1 col-lg-1 col-xl-1" id="icons_section"> <img src="<?php echo URL::to('');?>/assets/images/cloud.png" style="width:60px;margin-left:-19px; margin-bottom:-65px;"></div>
 									
-                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="heading_section">
+                                    <div class="col-sm-8 col-md-9 col-lg-11 col-xl-11" id="resume_link">
                                         <h6 style="margin-left:45px;">Resume</h6>
-                                        <p style="margin-left:45px;color:blue;">invite Friends</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -498,6 +500,51 @@
   <!-- base:js -->
   <script>
   var baseUrl = '<?php echo URL::to('');?>';
+  getviewJobList();
+function getviewJobList()
+{
+	var id = '<?php echo $job[3];?>';
+	$.ajax({
+        url:baseUrl+"/getviewJobList",
+        type: "GET",
+        data:{id:id,_token: $('meta[name="_token"]').attr('content')},
+		dataType: "JSON",
+		cache: false,
+		  headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data)
+        {
+             console.log(data);
+		  var details =  JSON.parse(JSON.stringify(data));
+         details.forEach(function(element) {
+			$('#first_name').append('<span>'+element.name+'</span>'); 
+			$('#facebook_link').append('<p style="margin-left:45px; color:blue">'+element.facebook+'</p>');
+			$('#instagram_link').append('<p style="margin-left:45px; color:blue">'+element.instagram+'</p>');
+			$('#twitter_link').append('<p style="margin-left:45px; color:blue">'+element.twitter+'</p>');
+			$('#resume_link').append('<a href="'+element.resume+'" style="margin-left:45px;">Resume</a>');
+			 if(element.images)
+            {
+                if(element.images.indexOf('public')!=-1){ 
+						$('#images').attr('src',element.images)
+                }
+                 else{
+                    $('#images').attr('src',element.images)
+                 }
+               
+            }
+        });
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+		
+}
+function backform(){
+	window.location.href=baseUrl+"/jobapplication";
+}
   </script>
   
   <script src="<?php echo URL::to('');?>/assets/vendors/js/vendor.bundle.base.js"></script>
@@ -514,7 +561,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="<?php echo URL::to('');?>/assets/js/dashboard.js"></script>
-  <script src="<?php echo URL::to('');?>/assets/application/jobapplication.js"></script>
+  <script src="<?php echo URL::to('');?>/assets/application/viewjobapplication.js"></script>
   <!-- End custom js for this page-->
  
 </body>
